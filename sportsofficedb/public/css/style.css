@@ -165,9 +165,14 @@ body{
     display: flex;
     align-items: center;
 }
+.checkbox-container     #showPassword {
+    background-color: #000;
+
+}
 
 .checkbox-container input[type="checkbox"] {
     margin-right: 5px;
+
 }
 
 .checkbox-container #show-password {
