@@ -51,29 +51,33 @@ body.dark-mode {
     display: flex;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
-
-    color: #C0834C;
+    font-weight: 600;
+    color: #E59C24;
 
 }
 #one p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    font-weight: 600;
     margin: 0px 4px 0px 4px;
     color: #FF615C;
 
 }
 
 .profile-container{
-    border-right: 1px solid #C0834C;
+    border-right: 1px solid #E59C24;
 }
 
 #header-hr{
-    background-color: #C0834C;
+    background-color: #E59C24;
     height: 1px;
     border: none;
 }
 
-
+.theme-container{
+    display: flex;
+    position: absolute;
+    margin: 1%  0%  0% 80%;
+}
 
 .theme-btn {
     display: flex;
@@ -83,11 +87,11 @@ body.dark-mode {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    margin: 100% 0% 100% 0%;
 }
 
-.theme-btn img{
-    width: 1.5vw;
-}
+
+
 
 
 /*  END HEADER CSS  */
@@ -150,7 +154,7 @@ body.light-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 5vw;
 }
 
 .login-form {
@@ -205,7 +209,6 @@ body.light-mode {
     color: white;
     margin-bottom: 2vw;
     outline: none;
-    box-shadow: 1px 1px 10px #fff;
 }
 
 .login-form input{
@@ -310,6 +313,7 @@ input[type="#showPassword"]{
     .logo-container #sp_logo, #usep_logo {
         width: 20vw;
         margin: 5px 5px;
+        transition: .5s;
     }
 
     .one-data-container {
@@ -360,6 +364,24 @@ input[type="#showPassword"]{
         height: 1px;
         border: none;
     }
+
+
+    .hidden{
+    }
+
+
+    .theme-btn {
+        display: flex;
+        padding: 10px;
+        background-color: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10% 0% 100% 0%;
+    }
+
+
 
 
 
@@ -413,3 +435,162 @@ input[type="#showPassword"]{
 
 
 }
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    /* For tablets & phones */
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-container {
+        flex-direction: row;
+        align-items: center;
+        padding: 10vw 0 0 0;
+        margin: 0;
+    }
+
+    .logo-container #sp_logo, #usep_logo {
+        width: 30vw;
+        margin: 5px 5px;
+        transition: .5s;
+    }
+
+    .one-data-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        border: none;
+        align-items: center;
+
+    }
+
+    .one-data #one {
+        text-align: center;
+        font-size: 4vw;
+        margin: 0;
+    }
+
+    .osas-unit p {
+        font-size: 7vw;
+        margin: 0 0 5vw 0;
+    }
+
+    .login-title {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        font-size: 7vw;
+        text-align: center;
+        color: white;
+    }
+
+    .login-subtitle {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 300;
+        font-size: 3vw;
+        margin-bottom: 3vw;
+        text-align: center;
+        color: white;
+    }
+
+    .login-container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    #header-hr{
+        background-color: #C0834C;
+        height: 1px;
+        border: none;
+    }
+
+
+    .hidden{
+        display: flex;
+    }
+
+
+    .theme-container{
+        display: flex;
+        position: absolute;
+        font-size: 1vw;
+        margin: 1%  0%  0% 80%;
+        transition: .3s ease-in-out;
+    }
+
+    .theme-btn {
+        display: flex;
+        padding: 10px;
+        background-color: transparent;
+        font-size: 2vw;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10% 0% 100% 0%;
+    }
+
+
+
+
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+    }
+
+    .login-form input,  .login-form select{
+        width: auto;
+        padding: 3vw;
+        font-size: 3vw;
+        margin-bottom: 3vw;
+
+    }
+
+    .login-btn {
+        width: 25vw;
+        padding: 2vw;
+        font-size: 2vw;
+        margin-bottom: 5vw;
+
+    }
+
+
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+    }
+
+
+    .profile-container{
+        border: none;
+    }
+
+
+
+}
+
+
+
+
+
+
+

@@ -12,6 +12,12 @@
 </head>
 <body class="dark-mode">
 
+    {{-- MOBILE --}}
+
+    <div class="theme-container hidden" >
+        <button id="theme-toggle" class="theme-btn"><p> 🌙 Dark Mode </p></button></div>
+
+
     <div class="header-container">
         <div class="logo-container">
             <img src="img/sportsoffice 1.png" id="sp_logo" alt="">
@@ -37,9 +43,6 @@
     </div>
 
     <hr id="header-hr">
-
-    <div class="theme-container" style="display: flex;  position: absolute; margin: 1%  0%  0% 80% ;">
-        <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button></div>
 
 
     <div class="login-container">
