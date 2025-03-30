@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <div class="header-container">
         <div class="logo-container">
             <img src="img/sportsoffice 1.png" id="sp_logo" alt="">
@@ -40,8 +41,6 @@
         <label for="campus"></label>
         <select name="campus" id="campus" required>
             <option value="" disabled selected hidden>Campus</option>
-            <option value="Obrero">Obrero</option>
-            <option value="Mintal">Mintal</option>
             <option value="Tagum">Tagum</option>
             <option value="Mabini">Mabini</option>
         </select>
@@ -72,6 +71,24 @@
         let pass = document.getElementById('password');
         pass.type = (pass.type === 'password') ? 'text' : 'password';
     }
+
+
+    // Light/Dark Mode Toggle
+function toggleMode() {
+    document.body.classList.toggle('light-mode');
+
+    // Store user preference in localStorage
+    let mode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', mode);
+}
+
+// Apply saved theme on page load
+window.onload = function () {
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+    }
+};
+
 </script>
 
 
