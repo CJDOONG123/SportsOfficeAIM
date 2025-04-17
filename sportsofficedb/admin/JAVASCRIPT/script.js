@@ -41,4 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = '../../login/PHP/login.php';
         });
     }
+
+
+
+
 });

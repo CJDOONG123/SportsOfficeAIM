@@ -110,3 +110,13 @@
     z-index: 50;
     font-size: 12px;
 }
+
+/* Fix for Tailwind sticky header if shadow gets cut */
+.sticky {
+    background-clip: padding-box;
+}
+
+.navbar {
+    position: fixed;
+}
+

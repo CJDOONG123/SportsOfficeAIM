@@ -52,7 +52,7 @@
                 $idAttr = $isLogout ? "id='logoutBtn' href='#'" : "href='?page=$item'";
 
                 echo "<a $idAttr class='$class' data-title='$item'>
-                <span class='menu-icon'>{$icon[$item]}</span>
+                <span class='menu-icon'>$icon[$item]</span>
                 <span class='menu-text'>$item</span>
                 </a>";
             }
@@ -71,11 +71,75 @@
 
 <!-- Main content -->
 <div id="mainContent" class="main-content">
-    <h1 class="text-2xl font-bold mb-4">
-        <?php echo "Welcome to " . htmlspecialchars($currentPage) . " Page"; ?>
-    </h1>
-    <p>This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p>
+    <div class="border-b-4 border-red-500 mb-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold pb-2">
+            <?php echo htmlspecialchars($currentPage); ?>
+        </h1>
+
+        
+        <?php if ($currentPage === 'Users'): ?>
+            <button onclick="document.getElementById('addUserModal').classList.remove('hidden')"
+                    class="flex items-center text-red-500 font-semibold hover:text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                     class="w-5 h-5 mr-1 border-2 border-red-500 rounded-full p-0.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 4v16m8-8H4"/>
+                </svg>
+                Add users
+            </button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Include Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <?php if ($currentPage === 'Users'): ?>
+        <?php
+        // Connect to DB
+        $conn = new mysqli("localhost", "root", "", "SportOfficeDB");
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Query the users table
+        $result = $conn->query("SELECT student_id, full_name, address FROM users");
+
+        if ($result->num_rows > 0): ?>
+    <div class="h-[calc(100vh-200px)] overflow-y-auto">
+        <!-- Sticky Header -->
+        <div class="flex items-center bg-red-500 text-white p-4 font-semibold shadow-md sticky top-0 z-20 rounded-t-lg">
+            <div class="w-1/12 text-center"></div>
+            <div class="w-3/12">Student ID</div>
+            <div class="w-4/12">Student Name</div>
+            <div class="w-4/12">Student Address</div>
+        </div>
+
+        <!-- User Rows -->
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="flex items-center justify-between bg-white p-4 mb-2 rounded-lg shadow-sm">
+                <div class="w-1/12 text-center text-xl text-gray-600">
+                    <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </div>
+                <div class="w-3/12 text-gray-800 font-medium"><?= htmlspecialchars($row['student_id']) ?></div>
+                <div class="w-4/12 text-gray-800"><?= htmlspecialchars($row['full_name']) ?></div>
+                <div class="w-4/12 text-gray-700"><?= htmlspecialchars($row['address']) ?></div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+
 </div>
+        <?php else: ?>
+            <p class="text-gray-500 text-center">No users found.</p> <!-- Centered "No users found" text -->
+        <?php endif;
+
+        $conn->close();
+        ?>
+    <?php else: ?>
+        <p class="text-center">This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p> <!-- Centered text -->
+    <?php endif; ?>
 
 
 </body>
@@ -88,6 +152,37 @@
             <button id="cancelLogout" class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400">No</button>
             <button id="confirmLogout" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Yes</button>
         </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="addUserModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Add User</h2>
+            <button onclick="document.getElementById('addUserModal').classList.add('hidden')"
+                    class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+        </div>
+        <form action="add_user.php" method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700">Username</label>
+                <input type="text" name="username" class="w-full border border-gray-300 p-2 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Email</label>
+                <input type="email" name="email" class="w-full border border-gray-300 p-2 rounded" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Password</label>
+                <input type="password" name="password" class="w-full border border-gray-300 p-2 rounded" required>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">
+                    Submit
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
