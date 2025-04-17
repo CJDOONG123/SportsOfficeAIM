@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left-panel, .right-panel {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-panel {
+    background-color: #1c1c1c;
+    color: white;
+    text-align: center;
+}
+
+.left-panel .logo {
+
+    max-width: 120px;
+    margin: 80px 10px 0;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.left-panel h2 {
+    margin-top: 20px;
+    font-size: 1.9rem;
+}
+
+.left-panel .highlight {
+    color: #e63946;
+    font-weight: bold;
+}
+
+.left-panel p {
+    margin-top: 10px;
+    font-size: 1.0rem;
+}
+
+.left-panel footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+}
+
+.left-panel footer a {
+    color: #ccc;
+    text-decoration: underline;
+    margin: 0 5px;
+}
+
+.right-panel {
+    background: url('../../image/background.png') no-repeat center center/cover;
+    position: relative;
+}
+
+.login-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+    max-width: 320px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.login-box h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login-box p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: #e63946;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-box button:hover {
+    background-color: #d62828;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.password-container {
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-panel, .right-panel {
+        width: 100%;
+    }
+    .logo-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
