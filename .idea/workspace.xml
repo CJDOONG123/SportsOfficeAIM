@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sportsofficedb/admin/JAVASCRIPT/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SportsOfficeAIM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SportsOfficeAIM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Deru/PhpstormProjects/SportsOfficeAIM/sportsofficedb/admin",
+    "last_opened_file_path": "C:/Users/Deru/PhpstormProjects/SportsOfficeAIM/sportsofficedb/admin/JAVASCRIPT",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,14 +72,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\JAVASCRIPT" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\CSS" />
+      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\PHP" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\PHP" />
+      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\CSS" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\CSS" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\JAVASCRIPT" />
-      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\PHP" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -94,7 +101,8 @@
       <updated>1744671961249</updated>
       <workItem from="1744671963543" duration="369000" />
       <workItem from="1744724920801" duration="1622000" />
-      <workItem from="1744813825316" duration="11763000" />
+      <workItem from="1744813825316" duration="23857000" />
+      <workItem from="1744883093764" duration="2210000" />
     </task>
     <servers />
   </component>
