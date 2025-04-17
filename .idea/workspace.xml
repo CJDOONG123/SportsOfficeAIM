@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sportsofficedb/admin/JAVASCRIPT/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SportsOfficeAIM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SportsOfficeAIM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" afterDir="false" />
-    </list>
+    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +94,7 @@
       <workItem from="1744671963543" duration="369000" />
       <workItem from="1744724920801" duration="1622000" />
       <workItem from="1744813825316" duration="23857000" />
-      <workItem from="1744883093764" duration="2210000" />
+      <workItem from="1744883093764" duration="2534000" />
     </task>
     <servers />
   </component>
@@ -110,11 +102,38 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
