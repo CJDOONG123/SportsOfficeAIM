@@ -46,8 +46,11 @@
 }
 
 .active-menu {
-    background-color: #ef4444;
+    background-color: #ef4444; /* Red-500 */
+    color: white;
+    font-weight: bold;
 }
+
 
 .main-content {
     margin-left: 250px;
@@ -61,4 +64,49 @@
 
 .main-content.collapsed {
     margin-left: 70px;
+}
+
+.menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Add a red dot or border for active items in collapsed mode */
+.sidebar.collapsed .active-menu {
+    position: relative;
+    background-color: #ef4444; /* Or keep background if desired */
+}
+
+.sidebar.collapsed .active-menu::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.sidebar.collapsed .menu-item {
+    position: relative;
+}
+
+.sidebar.collapsed .menu-item:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1f2937; /* Tailwind gray-800 */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 50;
+    font-size: 12px;
 }

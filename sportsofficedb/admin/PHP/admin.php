@@ -33,6 +33,8 @@
 
         <nav class="space-y-2 w-full px-2 mt-4">
             <?php
+            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'Documents'; // Default to 'Documents'
+
             $menu = ['Documents', 'Evaluation', 'Reports', 'Users', 'Log-out'];
             $icon = [
                 'Documents' => "<box-icon name='file-doc' type='solid' color='white'></box-icon>",
@@ -43,13 +45,15 @@
             ];
 
             foreach ($menu as $item) {
-                $isLogout = $item === ' ';
-                $class = $isLogout ? 'menu-item active-menu' : 'menu-item';
-                $idAttr = $isLogout ? "id='logoutBtn'" : "";
-                echo "<a href='#' class='$class' $idAttr>
-                    <span class='menu-icon'>{$icon[$item]}</span>
-                    <span class='menu-text'>$item</span>
-                  </a>";
+                $isLogout = $item === 'Log-out';
+                $isActive = $item === $currentPage;
+                $class = $isActive ? 'menu-item active-menu' : 'menu-item';
+                $idAttr = $isLogout ? "id='logoutBtn' href='#'" : "href='?page=$item'";
+
+                echo "<a $idAttr class='$class' data-title='$item'>
+                <span class='menu-icon'>{$icon[$item]}</span>
+                <span class='menu-text'>$item</span>
+                </a>";
             }
             ?>
         </nav>
@@ -66,9 +70,24 @@
 
 <!-- Main content -->
 <div id="mainContent" class="main-content">
-    <h1 class="text-2xl font-bold mb-4">Welcome to Admin Dashboard</h1>
-    <p>This is the main content area. Add your dashboard widgets and features here.</p>
+    <h1 class="text-2xl font-bold mb-4">
+        <?php echo "Welcome to " . htmlspecialchars($currentPage) . " Page"; ?>
+    </h1>
+    <p>This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p>
 </div>
 
+
 </body>
+
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
+        <h2 class="text-lg font-semibold mb-4">Are you sure you want to logout?</h2>
+        <div class="flex justify-center gap-4">
+            <button id="cancelLogout" class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400">No</button>
+            <button id="confirmLogout" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Yes</button>
+        </div>
+    </div>
+</div>
+
 </html>
