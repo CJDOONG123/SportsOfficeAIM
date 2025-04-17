@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fc8187b7-5acf-4749-8a93-2fb7dba49509" name="SPORT" url="http://localhost">
+        <fileTransfer mountedRoot="C:\xampp\htdocs\SportsOfficeAIM" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

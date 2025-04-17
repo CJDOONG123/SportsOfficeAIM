@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="SPORT" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="SPORT">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/SportsOfficeAIM" local="$PROJECT_DIR$" web="/SportsOfficeAIM" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

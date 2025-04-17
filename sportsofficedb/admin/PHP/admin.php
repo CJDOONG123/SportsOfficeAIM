@@ -17,6 +17,7 @@
 
     <!-- Custom JS -->
     <script src="../JAVASCRIPT/script.js" defer></script>
+    <link rel="icon" href="../../image/Usep.png" sizes="any" />
 </head>
 
 

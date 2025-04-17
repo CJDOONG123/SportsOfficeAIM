@@ -6,6 +6,8 @@
     <title>USeP OSAS-Sports Unit Login</title>
     <link rel="stylesheet" href="../CSS/Styles.css">
     <script src="../JAVASCRIPT/script.js" defer></script>
+    <link rel="icon" href="../../image/Usep.png" sizes="any" />
+
 </head>
 <body>
 <div class="container">
@@ -28,8 +30,9 @@
         <div class="login-box">
             <h1>WELCOME</h1>
             <p>Please log in to get started.</p>
-            <form onsubmit="return validateForm(event)">
-                <label>
+            <form method="POST" action="auth.php" onsubmit="return validateForm(event)">
+
+            <label>
                     <input type="email" name="email" placeholder="Enter Email" required>
                 </label>
                 <div class="password-container">
