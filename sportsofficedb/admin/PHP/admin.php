@@ -43,7 +43,7 @@
             ];
 
             foreach ($menu as $item) {
-                $isLogout = $item === 'Log-out';
+                $isLogout = $item === ' ';
                 $class = $isLogout ? 'menu-item active-menu' : 'menu-item';
                 $idAttr = $isLogout ? "id='logoutBtn'" : "";
                 echo "<a href='#' class='$class' $idAttr>
