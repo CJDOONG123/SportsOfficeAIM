@@ -140,31 +140,37 @@
 
         if ($result->num_rows > 0): ?>
     <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
-        <div class="px-2 space-y-2">
-
+        <div class="w-full px-2 sm:px-4 lg:px-8 space-y-2">
             <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
-                    <div class="text-center text-xl text-gray-600 sm:w-1/12">
+                <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
+                    <!-- Edit Icon -->
+                    <div class="text-center text-xl text-gray-600 sm:col-span-1">
                         <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
                             <i class="fas fa-edit"></i>
                         </a>
                     </div>
-                    <div class="text-gray-800 font-medium sm:w-3/12">
-                        <span class="block sm:hidden font-semibold">Student ID:</span>
+
+                    <!-- Student ID -->
+                    <div class="text-gray-800 font-medium sm:col-span-3">
+                        <span class="block sm:hidden font-semibold text-gray-600">Student ID:</span>
                         <?= htmlspecialchars($row['student_id']) ?>
                     </div>
-                    <div class="text-gray-800 sm:w-4/12">
-                        <span class="block sm:hidden font-semibold">Name:</span>
+
+                    <!-- Full Name -->
+                    <div class="text-gray-800 sm:col-span-4">
+                        <span class="block sm:hidden font-semibold text-gray-600">Name:</span>
                         <?= htmlspecialchars($row['full_name']) ?>
                     </div>
-                    <div class="text-gray-700 sm:w-4/12">
-                        <span class="block sm:hidden font-semibold">Address:</span>
+
+                    <!-- Address -->
+                    <div class="text-gray-700 sm:col-span-4">
+                        <span class="block sm:hidden font-semibold text-gray-600">Address:</span>
                         <?= htmlspecialchars($row['address']) ?>
                     </div>
                 </div>
-
             <?php endwhile; ?>
         </div>
+
     </div>
 
 

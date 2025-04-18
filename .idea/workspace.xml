@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +112,7 @@
       <workItem from="1744902340697" duration="4838000" />
       <workItem from="1744907418879" duration="10469000" />
       <workItem from="1744990150164" duration="12406000" />
+      <workItem from="1745019540437" duration="1056000" />
     </task>
     <servers />
   </component>
