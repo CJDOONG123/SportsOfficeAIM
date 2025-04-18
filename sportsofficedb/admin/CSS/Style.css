@@ -55,12 +55,14 @@
 .main-content {
     margin-left: 250px;
     flex: 1;
-    background-color: white;
-    padding: 1.5rem;
-    overflow-y: auto;
+    padding-top: 0; /* ensure no top padding here */
     height: 100vh;
-    transition: margin-left 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 .main-content.collapsed {
     margin-left: 70px;
@@ -119,4 +121,27 @@
 .navbar {
     position: fixed;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.scroll-wrapper {
+    width: 300px;
+    height: 200px;
+    overflow-y: scroll;
+    direction: rtl; /* move scrollbar to the left */
+    border: 1px solid #ccc;
+}
+
+.scroll-content {
+    direction: ltr; /* reset text/content alignment */
+    text-align: left;
+}
+
+
 
