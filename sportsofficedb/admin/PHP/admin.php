@@ -68,8 +68,6 @@
                 <?php echo htmlspecialchars($currentPage); ?>
             </h1>
 
-
-
             <?php if ($currentPage === 'Users'): ?>
                 <button onclick="document.getElementById('addUserModal').classList.remove('hidden')" class="flex items-center text-red-500 font-semibold hover:text-red-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-1 border-2 border-red-500 rounded-full p-0.5">
@@ -133,15 +131,14 @@
             </div>
         <?php endif; ?>
 
-   <!-- Replace icons with tailwind-compatible boxicons in reports -->
-    <?php elseif ($currentPage === 'Reports'): ?>
+   <<?php elseif ($currentPage === 'Reports'): ?>
     <div class="p-4 sm:p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
             <!-- Total Students -->
             <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16">
-                    <img src="../../image/studenticon.png" alt="Total Student Icon" class="w-full h-full object-contain" />
+                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-red-500 bg-red-100 rounded-full text-2xl">
+                    <i class='bx bxs-user-account'></i>
                 </div>
                 <div>
                     <p class="text-gray-800 font-semibold text-sm sm:text-base">Total Students</p>
@@ -151,8 +148,8 @@
 
             <!-- Approved Reports -->
             <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16">
-                    <img src="../../image/docicon.png" alt="Approved Reports Icon" class="w-full h-full object-contain" />
+                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-green-600 bg-green-100 rounded-full text-2xl">
+                    <i class='bx bxs-file-doc'></i>
                 </div>
                 <div>
                     <p class="text-gray-800 font-semibold text-sm sm:text-base">Approved Reports</p>
@@ -162,26 +159,24 @@
 
             <!-- Submission Stats -->
             <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
-                <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32">
-                    <img src="../../image/grapicon.png" alt="Submission Stats Icon" class="w-full h-full object-contain" />
+                <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32 text-blue-600 bg-blue-100 rounded-full text-5xl">
+                    <i class='bx bxs-bar-chart-alt-2'></i>
                 </div>
                 <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
                     <div class="flex flex-col md:flex-row items-center md:space-x-4">
                         <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
-                        <div class="text-gray-500 text-sm">Ongoing Submission</div>
+                        <div class="text-gray-800 font-semibold text-sm sm:text-base">Ongoing Submission</div>
                     </div>
                     <div class="flex flex-col md:flex-row items-center md:space-x-4">
                         <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
-                        <div class="text-gray-500 text-sm">Verified Document</div>
+                        <div class="text-gray-800 font-semibold text-sm sm:text-base">Verified Document</div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
-
-
-
+    
 
     <?php else: ?>
         <p class="text-center">This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p>
