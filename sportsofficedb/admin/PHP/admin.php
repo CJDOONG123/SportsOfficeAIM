@@ -64,9 +64,11 @@
 <div id="mainContent" class="main-content px-1 sm:px-4 lg:px-0">
     <div class="sticky top-0 z-30 bg-gray w-full px-1 sm:px-4 lg:px-3">
         <div class="border-b-4 border-red-500 px-5 pt-2 pb-1 flex justify-between items-center bg-gray">
-            <h1 class="text-2xl font-bold">
+            <h1 class="text-3xl font-semibold text-gray-900 tracking-tight">
                 <?php echo htmlspecialchars($currentPage); ?>
             </h1>
+
+
 
             <?php if ($currentPage === 'Users'): ?>
                 <button onclick="document.getElementById('addUserModal').classList.remove('hidden')" class="flex items-center text-red-500 font-semibold hover:text-red-600">
@@ -131,16 +133,55 @@
             </div>
         <?php endif; ?>
 
+   <!-- Replace icons with tailwind-compatible boxicons in reports -->
     <?php elseif ($currentPage === 'Reports'): ?>
-        <div class="p-6">
-            <h2 class="text-2xl font-bold mb-4 text-red-600">Reports Dashboard</h2>
-            <p class="mb-2 text-gray-700">Welcome to the reports section. Choose from the following options:</p>
-            <ul class="list-disc pl-6 space-y-1 text-gray-800">
-                <li><a href="generate_report.php" class="text-blue-500 hover:underline">Generate New Report</a></li>
-                <li><a href="view_reports.php" class="text-blue-500 hover:underline">View All Reports</a></li>
-                <li><a href="download_reports.php" class="text-blue-500 hover:underline">Download Reports</a></li>
-            </ul>
+        <div class="p-4 sm:p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+
+                <!-- Total Students -->
+                <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
+                    <div class="w-12 sm:w-16 h-12 sm:h-16 mb-2">
+                        <img src="../../image/studenticon.png" alt="Total Student Icon" class="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                        <div class="text-gray-500 text-sm">Total Student</div>
+                        <div class="text-2xl sm:text-3xl font-bold">52</div>
+                    </div>
+                </div>
+
+                <!-- Approved Reports -->
+                <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
+                    <div class="w-12 sm:w-16 h-12 sm:h-16 mb-2">
+                        <img src="../../image/docicon.png" alt="Approved Reports Icon" class="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                        <div class="text-gray-500 text-sm">Approved Reports</div>
+                        <div class="text-2xl sm:text-3xl font-bold">34</div>
+                    </div>
+                </div>
+
+                <!-- Submission Stats -->
+                <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32">
+                        <img src="../../image/grapicon.png" alt="Submission Stats Icon" class="w-full h-full object-contain" />
+                    </div>
+                    <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
+                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
+                            <div class="text-gray-500 text-sm">Ongoing Submission</div>
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
+                            <div class="text-gray-500 text-sm">Verified Document</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
+
+
     <?php else: ?>
         <p class="text-center">This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p>
     <?php endif; ?>
