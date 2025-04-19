@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,33 +66,52 @@
     <div class="sticky top-0 z-30 bg-gray w-full px-1 sm:px-4 lg:px-3">
         <div class="border-b-4 border-red-500 px-5 pt-2 pb-1 flex justify-between items-center bg-gray">
             <h1 class="text-3xl font-semibold text-gray-900 tracking-tight">
-                <?php echo htmlspecialchars($currentPage); ?>
-            </h1>
+                    <?php echo htmlspecialchars($currentPage); ?>
+                </h1>
 
             <?php if ($currentPage === 'Users'): ?>
-                <button onclick="document.getElementById('addUserModal').classList.remove('hidden')" class="flex items-center text-red-500 font-semibold hover:text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-1 border-2 border-red-500 rounded-full p-0.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                    Add users
-                </button>
+                <div class="w-full px-4 sm:px-0 flex flex-col items-center sm:items-end space-y-2 sm:space-y-4">
+                    <!-- Add User Button -->
+                    <button onclick="document.getElementById('addUserModal').classList.remove('hidden')"
+                            class="flex items-center text-red-500 font-semibold hover:text-red-600 sm:self-end w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor"
+                             class="w-5 h-5 mr-1 border-2 border-red-500 rounded-full p-0.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Add users
+                    </button>
+
+                    <!-- Search Field -->
+                    <form method="GET" action=""
+                          class="sm:self-end w-auto">
+                        <input type="hidden" name="page" value="Users"/>
+                        <input type="text" name="search" placeholder="Search user..."
+                               class="border border-gray-300 rounded px-3 py-1 text-sm w-full focus:outline-none focus:ring-2 focus:ring-red-400"/>
+                    </form>
+                </div>
             <?php endif; ?>
+
+
         </div>
 
         <?php if ($currentPage === 'Users'): ?>
-            <div class="w-full bg-red-500 text-white font-semibold rounded-t-lg px-5 mt-2">
-                <div class="flex sm:hidden flex-col p-4 space-y-1 text-sm">
+
+      <div class="w-full bg-red-500 text-white font-semibold rounded-t-lg px-5 mt-2 mb-4">
+        <div class="flex sm:hidden flex-col p-4 space-y-4 text-sm">
                     <div>Student ID</div>
                     <div>Student Name</div>
                     <div>Student Address</div>
                 </div>
-                <div class="hidden sm:flex items-center p-4">
+                <div class="hidden sm:flex items-center px-4 py-6"> <!-- updated line -->
                     <div class="w-1/12 text-center"></div>
                     <div class="w-3/12">Student ID</div>
                     <div class="w-4/12">Student Name</div>
                     <div class="w-4/12">Student Address</div>
                 </div>
             </div>
+
         <?php endif; ?>
     </div>
 
@@ -105,7 +125,7 @@
         if ($result->num_rows > 0): ?>
 
             <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
-                <div class="w-full px-2 sm:px-4 lg:px-8 space-y-2">
+                <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
                             <div class="text-center text-xl text-gray-600 sm:col-span-1">
@@ -131,52 +151,52 @@
             </div>
         <?php endif; ?>
 
-   <<?php elseif ($currentPage === 'Reports'): ?>
-    <div class="p-4 sm:p-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <?php elseif ($currentPage === 'Reports'): ?>
+        <div class="p-4 sm:p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
-            <!-- Total Students -->
-            <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-red-500 bg-red-100 rounded-full text-2xl">
-                    <i class='bx bxs-user-account'></i>
-                </div>
-                <div>
-                    <p class="text-gray-800 font-semibold text-sm sm:text-base">Total Students</p>
-                    <p class="text-2xl sm:text-3xl font-bold text-gray-900">52</p>
-                </div>
-            </div>
-
-            <!-- Approved Reports -->
-            <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-green-600 bg-green-100 rounded-full text-2xl">
-                    <i class='bx bxs-file-doc'></i>
-                </div>
-                <div>
-                    <p class="text-gray-800 font-semibold text-sm sm:text-base">Approved Reports</p>
-                    <p class="text-2xl sm:text-3xl font-bold text-gray-900">34</p>
-                </div>
-            </div>
-
-            <!-- Submission Stats -->
-            <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
-                <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32 text-blue-600 bg-blue-100 rounded-full text-5xl">
-                    <i class='bx bxs-bar-chart-alt-2'></i>
-                </div>
-                <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
-                    <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                        <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
-                        <div class="text-gray-800 font-semibold text-sm sm:text-base">Ongoing Submission</div>
+                <!-- Total Students -->
+                <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-red-500 bg-red-100 rounded-full text-2xl">
+                        <i class='bx bxs-user-account'></i>
                     </div>
-                    <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                        <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
-                        <div class="text-gray-800 font-semibold text-sm sm:text-base">Verified Document</div>
+                    <div>
+                        <p class="text-gray-800 font-semibold text-sm sm:text-base">Total Students</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-900">52</p>
                     </div>
                 </div>
-            </div>
 
+                <!-- Approved Reports -->
+                <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 flex justify-center items-center text-green-600 bg-green-100 rounded-full text-2xl">
+                        <i class='bx bxs-file-doc'></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-800 font-semibold text-sm sm:text-base">Approved Reports</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-900">34</p>
+                    </div>
+                </div>
+
+                <!-- Submission Stats -->
+                <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32 text-blue-600 bg-blue-100 rounded-full text-5xl">
+                        <i class='bx bxs-bar-chart-alt-2'></i>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
+                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
+                            <div class="text-gray-800 font-semibold text-sm sm:text-base">Ongoing Submission</div>
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
+                            <div class="text-gray-800 font-semibold text-sm sm:text-base">Verified Document</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    
+
 
     <?php else: ?>
         <p class="text-center">This is the <?php echo htmlspecialchars($currentPage); ?> content area.</p>

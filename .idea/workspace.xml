@@ -93,6 +93,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="PHP" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="" />
@@ -117,6 +120,7 @@
       <workItem from="1745021952032" duration="2156000" />
       <workItem from="1745024311025" duration="1515000" />
       <workItem from="1745026251788" duration="6424000" />
+      <workItem from="1745037733384" duration="1364000" />
     </task>
     <servers />
   </component>
