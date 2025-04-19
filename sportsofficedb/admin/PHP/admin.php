@@ -135,50 +135,51 @@
 
    <!-- Replace icons with tailwind-compatible boxicons in reports -->
     <?php elseif ($currentPage === 'Reports'): ?>
-        <div class="p-4 sm:p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="p-4 sm:p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
-                <!-- Total Students -->
-                <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
-                    <div class="w-12 sm:w-16 h-12 sm:h-16 mb-2">
-                        <img src="../../image/studenticon.png" alt="Total Student Icon" class="w-full h-full object-contain" />
+            <!-- Total Students -->
+            <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16">
+                    <img src="../../image/studenticon.png" alt="Total Student Icon" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                    <p class="text-gray-800 font-semibold text-sm sm:text-base">Total Students</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900">52</p>
+                </div>
+            </div>
+
+            <!-- Approved Reports -->
+            <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16">
+                    <img src="../../image/docicon.png" alt="Approved Reports Icon" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                    <p class="text-gray-800 font-semibold text-sm sm:text-base">Approved Reports</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-900">34</p>
+                </div>
+            </div>
+
+            <!-- Submission Stats -->
+            <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32">
+                    <img src="../../image/grapicon.png" alt="Submission Stats Icon" class="w-full h-full object-contain" />
+                </div>
+                <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
+                    <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                        <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
+                        <div class="text-gray-500 text-sm">Ongoing Submission</div>
                     </div>
-                    <div>
-                        <div class="text-gray-500 text-sm">Total Student</div>
-                        <div class="text-2xl sm:text-3xl font-bold">52</div>
+                    <div class="flex flex-col md:flex-row items-center md:space-x-4">
+                        <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
+                        <div class="text-gray-500 text-sm">Verified Document</div>
                     </div>
                 </div>
-
-                <!-- Approved Reports -->
-                <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
-                    <div class="w-12 sm:w-16 h-12 sm:h-16 mb-2">
-                        <img src="../../image/docicon.png" alt="Approved Reports Icon" class="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                        <div class="text-gray-500 text-sm">Approved Reports</div>
-                        <div class="text-2xl sm:text-3xl font-bold">34</div>
-                    </div>
-                </div>
-
-                <!-- Submission Stats -->
-                <div class="bg-white rounded-xl shadow p-4 sm:p-8 flex flex-col md:flex-row items-center justify-center col-span-1 md:col-span-2 space-y-4 md:space-y-0 md:space-x-8">
-                    <div class="flex justify-center items-center w-24 sm:w-32 h-24 sm:h-32">
-                        <img src="../../image/grapicon.png" alt="Submission Stats Icon" class="w-full h-full object-contain" />
-                    </div>
-                    <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
-                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
-                            <div class="text-gray-500 text-sm">Ongoing Submission</div>
-                        </div>
-                        <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
-                            <div class="text-gray-500 text-sm">Verified Document</div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+    </div>
+
+
 
 
 
