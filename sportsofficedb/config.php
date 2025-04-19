@@ -27,7 +27,7 @@ $conn->select_db($dbname);
 $table = "users";
 $sql = "CREATE TABLE IF NOT EXISTS $table (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id VARCHAR(50) NOT NULL,
+    student_id VARCHAR(50) NOT NULL UNIQUE,
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
