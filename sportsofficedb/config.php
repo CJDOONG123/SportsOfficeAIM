@@ -59,5 +59,15 @@ if ($check->num_rows == 0) {
     echo "Sample user already exists.<br>";
 }
 
+// Count total number of students
+$result = $conn->query("SELECT COUNT(*) AS total FROM $table");
+if ($result) {
+    $row = $result->fetch_assoc();
+    echo "Total number of students: " . $row['total'] . "<br>";
+} else {
+    echo "Error counting students: " . $conn->error;
+}
+
+
 $conn->close();
 ?>
