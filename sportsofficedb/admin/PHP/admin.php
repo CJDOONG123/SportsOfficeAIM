@@ -116,42 +116,64 @@
     </div>
 
     <?php if ($currentPage === 'Users'): ?>
-        <?php
-        $conn = new mysqli("localhost", "root", "", "SportOfficeDB");
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+    <?php
+    $conn = new mysqli("localhost", "root", "", "SportOfficeDB");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
+    if ($searchTerm !== '') {
+        $searchTerm = strtolower($searchTerm);
+        $stmt = $conn->prepare("
+            SELECT student_id, full_name, address FROM users 
+            WHERE LOWER(student_id) LIKE ? 
+               OR LOWER(full_name) LIKE ? 
+               OR LOWER(address) LIKE ?
+        ");
+        $like = '%' . $searchTerm . '%';
+        $stmt->bind_param("sss", $like, $like, $like);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
         $result = $conn->query("SELECT student_id, full_name, address FROM users");
-        if ($result->num_rows > 0): ?>
+    }
 
-            <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
-                <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
-                            <div class="text-center text-xl text-gray-600 sm:col-span-1">
-                                <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </div>
-                            <div class="text-gray-800 font-medium sm:col-span-3">
-                                <span class="block sm:hidden font-semibold text-gray-600">Student ID:</span>
-                                <?= htmlspecialchars($row['student_id']) ?>
-                            </div>
-                            <div class="text-gray-800 sm:col-span-4">
-                                <span class="block sm:hidden font-semibold text-gray-600">Name:</span>
-                                <?= htmlspecialchars($row['full_name']) ?>
-                            </div>
-                            <div class="text-gray-700 sm:col-span-4">
-                                <span class="block sm:hidden font-semibold text-gray-600">Address:</span>
-                                <?= htmlspecialchars($row['address']) ?>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
+    if ($result->num_rows > 0): ?>
+    <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
+        <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
+                    <div class="text-center text-xl text-gray-600 sm:col-span-1">
+                        <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                    <div class="text-gray-800 font-medium sm:col-span-3">
+                        <span class="block sm:hidden font-semibold text-gray-600">Student ID:</span>
+                        <?= htmlspecialchars($row['student_id']) ?>
+                    </div>
+                    <div class="text-gray-800 sm:col-span-4">
+                        <span class="block sm:hidden font-semibold text-gray-600">Name:</span>
+                        <?= htmlspecialchars($row['full_name']) ?>
+                    </div>
+                    <div class="text-gray-700 sm:col-span-4">
+                        <span class="block sm:hidden font-semibold text-gray-600">Address:</span>
+                        <?= htmlspecialchars($row['address']) ?>
+                    </div>
                 </div>
-            </div>
-        <?php endif; ?>
+            <?php endwhile; ?>
+        </div>
+    </div>
+    <?php else: ?>
+    <div class="text-center text-gray-500 py-6 font-semibold">
+        No users found matching your search.
+    </div>
+    <?php endif; ?>
 
-        <?php elseif ($currentPage === 'Reports'): ?>
+
+
+    <?php elseif ($currentPage === 'Reports'): ?>
         <div class="p-4 sm:p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
@@ -162,7 +184,18 @@
                     </div>
                     <div>
                         <p class="text-gray-800 font-semibold text-sm sm:text-base">Total Students</p>
-                        <p class="text-2xl sm:text-3xl font-bold text-gray-900">52</p>
+                        <?php
+                        $reportConn = new mysqli("localhost", "root", "", "SportOfficeDB");
+                        $totalStudents = 0;
+                        if (!$reportConn->connect_error) {
+                            $countQuery = $reportConn->query("SELECT COUNT(*) AS total FROM users");
+                            if ($countQuery && $countRow = $countQuery->fetch_assoc()) {
+                                $totalStudents = $countRow['total'];
+                            }
+                            $reportConn->close();
+                        }
+                        ?>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-900"><?= $totalStudents ?></p>
                     </div>
                 </div>
 
@@ -173,7 +206,7 @@
                     </div>
                     <div>
                         <p class="text-gray-800 font-semibold text-sm sm:text-base">Approved Reports</p>
-                        <p class="text-2xl sm:text-3xl font-bold text-gray-900">34</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-900">0</p>
                     </div>
                 </div>
 
@@ -184,11 +217,11 @@
                     </div>
                     <div class="flex flex-col justify-center space-y-4 text-center md:text-left">
                         <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">12</div>
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">0</div>
                             <div class="text-gray-800 font-semibold text-sm sm:text-base">Ongoing Submission</div>
                         </div>
                         <div class="flex flex-col md:flex-row items-center md:space-x-4">
-                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">20</div>
+                            <div class="text-2xl sm:text-3xl font-bold text-gray-800">0</div>
                             <div class="text-gray-800 font-semibold text-sm sm:text-base">Verified Document</div>
                         </div>
                     </div>
