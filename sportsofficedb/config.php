@@ -25,39 +25,46 @@ $conn->select_db($dbname);
 
 // Create users table with additional fields
 $table = "users";
+
 $sql = "CREATE TABLE IF NOT EXISTS $table (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id VARCHAR(50) NOT NULL UNIQUE,
+    student_id VARCHAR(50),
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'student') NOT NULL DEFAULT 'student',
+    UNIQUE(student_id)
 )";
-if ($conn->query($sql) === TRUE) {
-    echo "Table '$table' created or already exists.<br>";
+
+// Check how many admin users exist
+$adminCheck = $conn->query("SELECT COUNT(*) AS total_admins FROM $table WHERE role = 'admin'");
+$adminCount = $adminCheck->fetch_assoc()['total_admins'];
+
+if ($adminCount < 2) {
+    $fullName = "Gian Glen Vincent Garcia";
+    $address = "Tagum City";
+    $sampleEmail = "admin@usep.edu.ph";
+    $samplePassword = "admin123";
+    $hashedPassword = password_hash($samplePassword, PASSWORD_DEFAULT);
+    $role = "admin";
+
+    // Check if this specific admin email exists
+    $check = $conn->query("SELECT * FROM $table WHERE email = '$sampleEmail'");
+    if ($check->num_rows == 0) {
+        $stmt = $conn->prepare("INSERT INTO $table (student_id, full_name, address, email, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+        $nullStudentId = null;
+        $stmt->bind_param("ssssss", $nullStudentId, $fullName, $address, $sampleEmail, $hashedPassword, $role);
+        $stmt->execute();
+        echo "Admin user created: $sampleEmail / $samplePassword<br>";
+        $stmt->close();
+    } else {
+        echo "Admin user already exists.<br>";
+    }
 } else {
-    die("Error creating table: " . $conn->error);
+    echo "Admin limit reached. No more admins can be added.<br>";
 }
 
-// Sample user data
-$studentId = "2023-00001";
-$fullName = "Juan Dela Cruz";
-$address = "Davao City";
-$sampleEmail = "admin@usep.edu.ph";
-$samplePassword = "admin123"; // In real apps, hash this
-$hashedPassword = password_hash($samplePassword, PASSWORD_DEFAULT);
-
-// Check if sample user exists
-$check = $conn->query("SELECT * FROM $table WHERE email = '$sampleEmail'");
-if ($check->num_rows == 0) {
-    $stmt = $conn->prepare("INSERT INTO $table (student_id, full_name, address, email, password) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $studentId, $fullName, $address, $sampleEmail, $hashedPassword);
-    $stmt->execute();
-    echo "Sample user created: $sampleEmail / $samplePassword<br>";
-    $stmt->close();
-} else {
-    echo "Sample user already exists.<br>";
-}
 
 // Count total number of students
 $result = $conn->query("SELECT COUNT(*) AS total FROM $table");

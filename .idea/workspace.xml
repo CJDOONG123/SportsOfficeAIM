@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +128,7 @@
       <workItem from="1745026251788" duration="6424000" />
       <workItem from="1745037733384" duration="1364000" />
       <workItem from="1745043126904" duration="2422000" />
-      <workItem from="1745045761419" duration="516000" />
+      <workItem from="1745045761419" duration="2159000" />
     </task>
     <servers />
   </component>

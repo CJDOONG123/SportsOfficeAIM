@@ -19,17 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Email and password are required.");
     }
 
-    $stmt = $conn->prepare("SELECT id, email, password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, email, password, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
 
     $result = $stmt->get_result();
     if ($user = $result->fetch_assoc()) {
         if (password_verify($password, $user['password'])) {
-            // Auth success
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            header("Location: ../../admin/PHP/admin.php");
+            $_SESSION['role'] = $user['role'];
+
+            // Redirect based on role
+            if ($user['role'] === 'admin') {
+                header("Location: ../../admin/PHP/admin.php");
+            } else {
+                header("Location: ../../user/PHP/user.php");
+            }
             exit;
         } else {
             echo "Incorrect password.";
@@ -42,4 +48,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
+
 ?>
