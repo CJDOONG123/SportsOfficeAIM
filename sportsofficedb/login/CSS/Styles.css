@@ -151,4 +151,33 @@ body, html {
     }
 }
 
+/* Mobile-specific styles */
+@media screen and (max-width: 600px) {
+    .signup-link {
+        margin-top: 12px;
+        padding: 0 10px;
+        text-align: center;
+        display: block;
+    }
+}
+
+
+/* Desktop-specific styles */
+@media screen and (min-width: 601px) {
+    .signup-link a {
+        color: skyblue;
+    }
+}
+
+.signup-link a {
+    color: skyblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+
 

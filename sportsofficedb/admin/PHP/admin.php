@@ -123,23 +123,24 @@
     }
 
     $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
-    if ($searchTerm !== '') {
-        $searchTerm = strtolower($searchTerm);
-        $stmt = $conn->prepare("
-            SELECT student_id, full_name, address FROM users 
-            WHERE LOWER(student_id) LIKE ? 
-               OR LOWER(full_name) LIKE ? 
-               OR LOWER(address) LIKE ?
-        ");
-        $like = '%' . $searchTerm . '%';
-        $stmt->bind_param("sss", $like, $like, $like);
-        $stmt->execute();
-        $result = $stmt->get_result();
-    } else {
-        $result = $conn->query("SELECT student_id, full_name, address FROM users");
-    }
+        if ($searchTerm !== '') {
+            $searchTerm = strtolower($searchTerm);
+            $stmt = $conn->prepare("
+        SELECT student_id, full_name, address FROM users 
+        WHERE LOWER(student_id) LIKE ? 
+           OR LOWER(full_name) LIKE ? 
+           OR LOWER(address) LIKE ?
+    ");
+            $like = '%' . $searchTerm . '%';
+            $stmt->bind_param("sss", $like, $like, $like);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        } else {
+            $result = $conn->query("SELECT student_id, full_name, address FROM users");
+        }
 
-    if ($result->num_rows > 0): ?>
+
+        if ($result->num_rows > 0): ?>
     <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
         <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
             <?php while ($row = $result->fetch_assoc()): ?>
@@ -170,6 +171,7 @@
         No users found matching your search.
     </div>
     <?php endif; ?>
+
 
 
 

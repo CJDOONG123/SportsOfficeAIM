@@ -1,45 +1,50 @@
 <?php
 $servername = "localhost";
-$username = "root"; // default for XAMPP/WAMP
-$password = "";     // default is empty for local dev
+$username = "root";
+$password = "";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password);
-
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Create database
 $dbname = "SportOfficeDB";
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if ($conn->query($sql) === TRUE) {
-    echo "Database '$dbname' created or already exists.<br>";
-} else {
+if ($conn->query($sql) !== TRUE) {
     die("Error creating database: " . $conn->error);
 }
 
-// Select the database
 $conn->select_db($dbname);
 
-// Create users table with additional fields
-$table = "users";
-
-$sql = "CREATE TABLE IF NOT EXISTS $table (
+// Create students table
+$sql = "CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id VARCHAR(50),
+    student_id VARCHAR(50) UNIQUE,
     full_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'student') NOT NULL DEFAULT 'student',
-    UNIQUE(student_id)
+    status ENUM('undergraduate', 'alumni') DEFAULT 'undergraduate'
 )";
+if ($conn->query($sql) !== TRUE) {
+    die("Error creating users table: " . $conn->error);
+}
 
-// Check how many admin users exist
-$adminCheck = $conn->query("SELECT COUNT(*) AS total_admins FROM $table WHERE role = 'admin'");
-$adminCount = $adminCheck->fetch_assoc()['total_admins'];
+// Create admins table
+$sql = "CREATE TABLE IF NOT EXISTS admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    status ENUM('undergraduate', 'alumni') DEFAULT 'undergraduate'
+)";
+if ($conn->query($sql) !== TRUE) {
+    die("Error creating admins table: " . $conn->error);
+}
+
+$adminCheck = $conn->query("SELECT COUNT(*) AS total_admins FROM admins");
+$adminCount = $adminCheck ? $adminCheck->fetch_assoc()['total_admins'] : 0;
 
 if ($adminCount < 2) {
     $fullName = "Gian Glen Vincent Garcia";
@@ -47,14 +52,12 @@ if ($adminCount < 2) {
     $sampleEmail = "admin@usep.edu.ph";
     $samplePassword = "admin123";
     $hashedPassword = password_hash($samplePassword, PASSWORD_DEFAULT);
-    $role = "admin";
 
-    // Check if this specific admin email exists
-    $check = $conn->query("SELECT * FROM $table WHERE email = '$sampleEmail'");
-    if ($check->num_rows == 0) {
-        $stmt = $conn->prepare("INSERT INTO $table (student_id, full_name, address, email, password, role) VALUES (?, ?, ?, ?, ?, ?)");
-        $nullStudentId = null;
-        $stmt->bind_param("ssssss", $nullStudentId, $fullName, $address, $sampleEmail, $hashedPassword, $role);
+    $check = $conn->query("SELECT * FROM admins WHERE email = '$sampleEmail'");
+    if ($check && $check->num_rows == 0) {
+        $status = "alumni";
+        $stmt = $conn->prepare("INSERT INTO admins (full_name, address, email, password, status) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $fullName, $address, $sampleEmail, $hashedPassword, $status);
         $stmt->execute();
         echo "Admin user created: $sampleEmail / $samplePassword<br>";
         $stmt->close();
@@ -65,16 +68,13 @@ if ($adminCount < 2) {
     echo "Admin limit reached. No more admins can be added.<br>";
 }
 
-
-// Count total number of students
-$result = $conn->query("SELECT COUNT(*) AS total FROM $table");
+$result = $conn->query("SELECT COUNT(*) AS total FROM users");
 if ($result) {
     $row = $result->fetch_assoc();
     echo "Total number of students: " . $row['total'] . "<br>";
 } else {
     echo "Error counting students: " . $conn->error;
 }
-
 
 $conn->close();
 ?>
