@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" afterDir="false" />
-    </list>
+    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,7 +126,7 @@
       <workItem from="1745037733384" duration="1364000" />
       <workItem from="1745043126904" duration="2422000" />
       <workItem from="1745045761419" duration="2525000" />
-      <workItem from="1745320011642" duration="5079000" />
+      <workItem from="1745320011642" duration="5400000" />
     </task>
     <servers />
   </component>
