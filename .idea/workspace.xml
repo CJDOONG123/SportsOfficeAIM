@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="" />
+    <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +59,7 @@
     "PHP Script.login.php.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Deru/Documents/Github/Por",
     "list.type.of.created.stylesheet": "CSS",
@@ -128,6 +131,7 @@
       <workItem from="1745045761419" duration="2525000" />
       <workItem from="1745320011642" duration="5079000" />
       <workItem from="1745328892160" duration="40000" />
+      <workItem from="1745384617328" duration="1436000" />
     </task>
     <servers />
   </component>

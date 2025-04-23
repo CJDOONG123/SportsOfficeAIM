@@ -9,13 +9,15 @@ body, html {
     height: 100%;
 }
 
+/* Mobile-first base styles */
 .container {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
 .left-panel, .right-panel {
-    flex: 1;
+    width: 100%;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -29,18 +31,18 @@ body, html {
     text-align: center;
 }
 
-.left-panel .logo {
-
+.logo {
     max-width: 120px;
-    margin: 80px 10px 0;
+    height: auto;
 }
 
 .logo-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    margin-top: 80px;
 }
 
 .left-panel h2 {
@@ -55,7 +57,7 @@ body, html {
 
 .left-panel p {
     margin-top: 10px;
-    font-size: 1.0rem;
+    font-size: 1rem;
 }
 
 .left-panel footer {
@@ -82,7 +84,7 @@ body, html {
     max-width: 320px;
     width: 100%;
     margin: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .login-box h1 {
@@ -97,13 +99,28 @@ body, html {
     text-align: center;
 }
 
-.login-box input {
+.login-box input,
+.login-box select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 0.9em;
 }
 
 .login-box button {
@@ -123,50 +140,10 @@ body, html {
     background-color: #d62828;
 }
 
-.toggle-password {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #aaa;
-    font-size: 0.9em;
-}
-
-.password-container {
-    position: relative;
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-    .left-panel, .right-panel {
-        width: 100%;
-    }
-    .logo-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-/* Mobile-specific styles */
-@media screen and (max-width: 600px) {
-    .signup-link {
-        margin-top: 12px;
-        padding: 0 10px;
-        text-align: center;
-        display: block;
-    }
-}
-
-
-/* Desktop-specific styles */
-@media screen and (min-width: 601px) {
-    .signup-link a {
-        color: skyblue;
-    }
+.signup-link {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 .signup-link a {
@@ -179,5 +156,99 @@ body, html {
     text-decoration: underline;
 }
 
+/* Mobile-specific tweaks */
+@media screen and (max-width: 600px) {
+    .signup-link {
+        padding: 0 10px;
+        display: block;
+    }
+}
 
+/* Desktop layout adjustments */
+@media (min-width: 768px) {
+    body {
+        margin: 0;
+        background-color: #1a1a1a;
+    }
 
+    .container {
+        flex-direction: row;
+        background: url('../../image/background.png') no-repeat center center;
+        background-size: cover;
+    }
+
+    .left-panel {
+        width: 40%;
+        background-color: #222;
+        color: #fff;
+        padding: 40px 20px;
+    }
+
+    .logo-container {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        width: 80px;
+        height: auto;
+    }
+
+    .highlight {
+        color: #eab308;
+    }
+
+    .right-panel {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-box {
+        width: 80%;
+        max-width: 600px;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .login-box h1 {
+        margin-bottom: 30px;
+    }
+
+    .login-box form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 20px;
+    }
+
+    .password-container {
+        grid-column: 1 / 2;
+    }
+
+    button[type="submit"] {
+        grid-column: span 2;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .signup-link {
+        grid-column: span 2;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 0.8em;
+        color: #ccc;
+    }
+
+    footer a {
+        color: #ccc;
+        text-decoration: underline;
+    }
+}
