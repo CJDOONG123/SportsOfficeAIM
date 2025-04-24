@@ -1,6 +1,6 @@
 function togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
-    const toggleText = passwordInput.nextElementSibling;
+    const toggleText = document.querySelector('.toggle-password');
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         toggleText.textContent = 'Hide';
@@ -11,19 +11,31 @@ function togglePasswordVisibility() {
 }
 
 function validateForm(event) {
-    const emailInput = document.querySelector('input[name="email"]');
-    const passwordInput = document.querySelector('input[name="password"]');
+    event.preventDefault();
 
-    if (!emailInput.checkValidity()) {
-        emailInput.reportValidity();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    if (!email || !password) {
+        showModal("Please fill in both fields.");
         return false;
     }
 
-    if (!passwordInput.checkValidity()) {
-        passwordInput.reportValidity();
+    if (email !== "admin@usep.edu" || password !== "123456") {
+        showModal("Invalid email or password. Please try again.");
         return false;
     }
 
-    // Allow the form to submit to PHP
-    return true;
+    event.target.submit();
+}
+
+function showModal(message) {
+    const modal = document.getElementById("errorModal");
+    const modalMessage = document.getElementById("modalMessage");
+    modalMessage.textContent = message;
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("errorModal").style.display = "none";
 }

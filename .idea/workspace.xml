@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/signup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sportsofficedb/store procendure query" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -48,35 +57,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.admin.php.executor": "Run",
-    "JavaScript Debug.login.php.executor": "Run",
-    "PHP Built-in Web Server.Unnamed.executor": "Run",
-    "PHP Built-in Web Server.log.executor": "Run",
-    "PHP Built-in Web Server.login.executor": "Run",
-    "PHP Script.config.php.executor": "Run",
-    "PHP Script.login.php.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Deru/Documents/Github/Por",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.admin.php.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.login.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Built-in Web Server.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Built-in Web Server.log.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Built-in Web Server.login.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.config.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.login.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deru/Documents/Github/Por&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\JAVASCRIPT" />
@@ -132,6 +142,11 @@
       <workItem from="1745320011642" duration="5079000" />
       <workItem from="1745328892160" duration="40000" />
       <workItem from="1745384617328" duration="1536000" />
+      <workItem from="1745457025593" duration="2550000" />
+      <workItem from="1745462597306" duration="255000" />
+      <workItem from="1745463549662" duration="5057000" />
+      <workItem from="1745487625076" duration="7083000" />
+      <workItem from="1745497954957" duration="335000" />
     </task>
     <servers />
   </component>

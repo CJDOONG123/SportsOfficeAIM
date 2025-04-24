@@ -122,25 +122,20 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
-        if ($searchTerm !== '') {
-            $searchTerm = strtolower($searchTerm);
-            $stmt = $conn->prepare("
-        SELECT student_id, full_name, address FROM users 
-        WHERE LOWER(student_id) LIKE ? 
-           OR LOWER(full_name) LIKE ? 
-           OR LOWER(address) LIKE ?
-    ");
-            $like = '%' . $searchTerm . '%';
-            $stmt->bind_param("sss", $like, $like, $like);
-            $stmt->execute();
-            $result = $stmt->get_result();
-        } else {
-            $result = $conn->query("SELECT student_id, full_name, address FROM users");
-        }
+    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : null;
 
+    // Use stored procedure
+    $stmt = $conn->prepare("CALL SearchUsers(?)");
+    $stmt->bind_param("s", $searchTerm);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        if ($result->num_rows > 0): ?>
+    // Display result (example)
+    while ($row = $result->fetch_assoc()) {
+        echo "ID: {$row['student_id']} | Name: {$row['full_name']} | Address: {$row['address']}<br>";
+    }
+
+    if ($result->num_rows > 0): ?>
     <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
         <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
             <?php while ($row = $result->fetch_assoc()): ?>
@@ -189,14 +184,16 @@
                         <?php
                         $reportConn = new mysqli("localhost", "root", "", "SportOfficeDB");
                         $totalStudents = 0;
+
                         if (!$reportConn->connect_error) {
-                            $countQuery = $reportConn->query("SELECT COUNT(*) AS total FROM users");
-                            if ($countQuery && $countRow = $countQuery->fetch_assoc()) {
-                                $totalStudents = $countRow['total'];
+                            $result = $reportConn->query("CALL GetTotalStudents()");
+                            if ($result && $row = $result->fetch_assoc()) {
+                                $totalStudents = $row['total'];
                             }
                             $reportConn->close();
                         }
                         ?>
+
                         <p class="text-2xl sm:text-3xl font-bold text-gray-900"><?= $totalStudents ?></p>
                     </div>
                 </div>
