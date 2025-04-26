@@ -9,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    <script src="../JAVASCRIPT/script.js" defer></script>
-    <link rel="icon" href="../../image/Usep.png" sizes="any" />
+    <link rel="stylesheet" href="../public/CSS/adminStyle.css" />
+    <script src="../../public/JAVASCRIPT/adminScript.js" defer></script>
+    <link rel="icon" href="../public/image/Usep.png" sizes="any" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 </head>
 
@@ -19,7 +19,7 @@
 <!-- Sidebar -->
 <div id="sidebar" class="sidebar">
     <div class="flex flex-col items-center mt-6 space-y-4">
-        <img src="../../image/SportOffice.png" alt="Logo" class="w-20 h-20" />
+        <img src="../public/image/SportOffice.png" alt="Logo" class="w-20 h-20" />
         <div class="text-center text-xs leading-tight">
             <p class="font-semibold">One Data. One USeP.</p>
             <p>USeP OSAS-Sports Unit</p>
@@ -66,8 +66,8 @@
     <div class="sticky top-0 z-30 bg-gray w-full px-1 sm:px-4 lg:px-3">
         <div class="border-b-4 border-red-500 px-5 pt-2 pb-1 flex justify-between items-center bg-gray">
             <h1 class="text-3xl font-semibold text-gray-900 tracking-tight">
-                    <?php echo htmlspecialchars($currentPage); ?>
-                </h1>
+                <?php echo htmlspecialchars($currentPage); ?>
+            </h1>
 
             <?php if ($currentPage === 'Users'): ?>
                 <div class="w-full px-4 sm:px-0 flex flex-col items-center sm:items-end space-y-2 sm:space-y-4">
@@ -98,8 +98,8 @@
 
         <?php if ($currentPage === 'Users'): ?>
 
-      <div class="w-full bg-red-500 text-white font-semibold rounded-t-lg px-5 mt-2 mb-4">
-        <div class="flex sm:hidden flex-col p-4 space-y-4 text-sm">
+            <div class="w-full bg-red-500 text-white font-semibold rounded-t-lg px-5 mt-2 mb-4">
+                <div class="flex sm:hidden flex-col p-4 space-y-4 text-sm">
                     <div>Student ID</div>
                     <div>Student Name</div>
                     <div>Student Address</div>
@@ -122,23 +122,27 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : null;
+    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
+    $searchTerm = strtolower($searchTerm);
 
-    // Use stored procedure
     $stmt = $conn->prepare("CALL SearchUsers(?)");
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
     $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Display result (example)
-    while ($row = $result->fetch_assoc()) {
-        echo "ID: {$row['student_id']} | Name: {$row['full_name']} | Address: {$row['address']}<br>";
-    }
+    $users = $result->fetch_all(MYSQLI_ASSOC); // Fetch ALL before closing
+    $stmt->close();
+    $conn->close();
+    ?>
 
-    if ($result->num_rows > 0): ?>
+    <?php if (count($users) > 0): ?>
     <div class="max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden scroll-thin">
         <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
-            <?php while ($row = $result->fetch_assoc()): ?>
+            <?php foreach ($users as $row): ?>
                 <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
                     <div class="text-center text-xl text-gray-600 sm:col-span-1">
                         <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
@@ -158,7 +162,7 @@
                         <?= htmlspecialchars($row['address']) ?>
                     </div>
                 </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </div>
     </div>
     <?php else: ?>
@@ -166,8 +170,6 @@
         No users found matching your search.
     </div>
     <?php endif; ?>
-
-
 
 
     <?php elseif ($currentPage === 'Reports'): ?>
@@ -184,16 +186,14 @@
                         <?php
                         $reportConn = new mysqli("localhost", "root", "", "SportOfficeDB");
                         $totalStudents = 0;
-
                         if (!$reportConn->connect_error) {
-                            $result = $reportConn->query("CALL GetTotalStudents()");
-                            if ($result && $row = $result->fetch_assoc()) {
-                                $totalStudents = $row['total'];
+                            $countQuery = $reportConn->query("SELECT COUNT(*) AS total FROM users");
+                            if ($countQuery && $countRow = $countQuery->fetch_assoc()) {
+                                $totalStudents = $countRow['total'];
                             }
                             $reportConn->close();
                         }
                         ?>
-
                         <p class="text-2xl sm:text-3xl font-bold text-gray-900"><?= $totalStudents ?></p>
                     </div>
                 </div>

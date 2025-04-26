@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -19,30 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Email and password are required.");
     }
 
-    // Call stored procedure
-    $stmt = $conn->prepare("CALL LoginUser(?, ?)");
-    $stmt->bind_param("ss", $email, $password);
+    $stmt = $conn->prepare("CALL find_user_by_email(?)");
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+    $stmt->bind_param("s", $email);
     $stmt->execute();
 
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
+    $stmt->close();
 
-    if (isset($user['role'])) {
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
 
         if ($user['role'] === 'admin') {
-            header("Location: ../../admin/PHP/admin.php");
+            header("Location: ../view/adminView.php");
         } else {
-            header("Location: ../../user/PHP/user.php");
+            header("Location: ../view/userView.php");
         }
         exit;
     } else {
-        echo $user['message'];
+        $_SESSION['login_error'] = "Invalid email or password.";
+        header("Location: ../view/login.php");
+        exit;
     }
-
-    $stmt->close();
 }
 
 $conn->close();

@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - USeP OSAS-Sports Unit</title>
-    <link rel="stylesheet" href="../CSS/Styles.css">
-    <link rel="stylesheet" href="../CSS/signup.css">
-    <script src="../JAVASCRIPT/script.js" defer></script>
+    <link rel="stylesheet" href="../public/CSS/signup.css">
+    <link rel="icon" href="../public/image/Usep.png" sizes="any" />
 </head>
 <body>
 <div class="container">
     <div class="left-panel">
         <div class="logo-container">
-            <img src="../../image/SportOffice.png" alt="Sports Office Logo" class="logo">
-            <img src="../../image/Usep.png" alt="USeP Logo" class="logo">
+            <img src="../public/image/SportOffice.png" alt="Sports Office Logo" class="logo">
+            <img src="../public/image/Usep.png" alt="USeP Logo" class="logo">
         </div>
         <h2><span class="highlight">Join</span> <span class="highlight">USeP Sports</span></h2>
         <h1>USeP OSAS-Sports Unit</h1>
@@ -42,7 +41,7 @@
                 </select>
                 <button type="submit">SIGN UP</button>
             </form>
-            <p class="signup-link">Already have an account? <a href="login.php">Log In</a></p>
+            <p class="signup-link">Already have an account? <a href="../view/loginView.php">Log In</a></p>
         </div>
     </div>
 </div>

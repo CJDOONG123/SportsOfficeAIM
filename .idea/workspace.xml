@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/signup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sportsofficedb/store procendure query" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/CSS/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/JAVASCRIPT/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/admin/PHP/admin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/SportOffice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/Usep.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/docicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/eafd553e-5735-4754-b564-f2d7ef9d5209.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/grapicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/image/studenticon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/Styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/CSS/signup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/JAVASCRIPT/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/login/PHP/signup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/store procendure query" beforeDir="false" afterPath="$PROJECT_DIR$/store procendure query" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sportsofficedb/user/user.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +81,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deru/Documents/Github/Por&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deru/Desktop/SportsOfficeAIM&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -93,11 +103,11 @@
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SportsOfficeAIM" />
+      <recent name="C:\xampp\htdocs\SportsOfficeAIM\sportsofficedb\controller" />
       <recent name="C:\xampp\htdocs\SportsOfficeAIM\sportsofficedb" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\PHP" />
       <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\PHP" />
-      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\admin\CSS" />
-      <recent name="C:\Users\Deru\PhpstormProjects\SportsOfficeAIM\sportsofficedb\login\CSS" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -147,6 +157,10 @@
       <workItem from="1745463549662" duration="5057000" />
       <workItem from="1745487625076" duration="7083000" />
       <workItem from="1745497954957" duration="335000" />
+      <workItem from="1745514967146" duration="306000" />
+      <workItem from="1745636322687" duration="307000" />
+      <workItem from="1745636655004" duration="15000" />
+      <workItem from="1745636785906" duration="7723000" />
     </task>
     <servers />
   </component>
