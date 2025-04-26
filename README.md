@@ -1,3 +1,6 @@
+
+**# MVC**
+
 sportsofficedb/
 │
 ├── controller/
@@ -22,7 +25,7 @@ sportsofficedb/
 │   ├── image/
 │   └── index.php         <-- Entry point
 │
-├── config/
-│   └── database.php      <-- DB connection
+├── database/
+│   └── config.php      <-- DB connection
 │
 └── README.md
