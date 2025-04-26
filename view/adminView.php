@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="../public/CSS/adminStyle.css" />
-    <script src="../../public/JAVASCRIPT/adminScript.js" defer></script>
+    <script src="../public/JAVASCRIPT/adminScript.js" defer></script>
     <link rel="icon" href="../public/image/Usep.png" sizes="any" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 </head>
@@ -187,9 +187,12 @@
                         $reportConn = new mysqli("localhost", "root", "", "SportOfficeDB");
                         $totalStudents = 0;
                         if (!$reportConn->connect_error) {
-                            $countQuery = $reportConn->query("SELECT COUNT(*) AS total FROM users");
-                            if ($countQuery && $countRow = $countQuery->fetch_assoc()) {
-                                $totalStudents = $countRow['total'];
+                            // Call the stored procedure
+                            if ($result = $reportConn->query("CALL GetTotalStudents()")) {
+                                if ($row = $result->fetch_assoc()) {
+                                    $totalStudents = $row['total'];
+                                }
+                                $result->free(); // Important: free result set when using CALL
                             }
                             $reportConn->close();
                         }
@@ -197,6 +200,7 @@
                         <p class="text-2xl sm:text-3xl font-bold text-gray-900"><?= $totalStudents ?></p>
                     </div>
                 </div>
+
 
                 <!-- Approved Reports -->
                 <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4">

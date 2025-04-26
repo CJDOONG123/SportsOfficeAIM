@@ -1,3 +1,5 @@
+
+<!-- File: /view/signupView.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,27 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - USeP OSAS-Sports Unit</title>
     <link rel="stylesheet" href="../public/CSS/signup.css">
-    <link rel="icon" href="../public/image/Usep.png" sizes="any" />
+    <link rel="icon" href="../public/image/Usep.png" sizes="any">
 </head>
 <body>
 <div class="container">
-    <div class="left-panel">
+    <div class="top-bar">
         <div class="logo-container">
             <img src="../public/image/SportOffice.png" alt="Sports Office Logo" class="logo">
             <img src="../public/image/Usep.png" alt="USeP Logo" class="logo">
         </div>
         <h2><span class="highlight">Join</span> <span class="highlight">USeP Sports</span></h2>
         <h1>USeP OSAS-Sports Unit</h1>
-        <footer>
-            <p>&copy; 2025. All Rights Reserved.</p>
-            <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
-        </footer>
     </div>
 
-    <div class="right-panel">
+    <div class="center-panel">
         <div class="login-box">
             <h1>CREATE ACCOUNT</h1>
-            <form method="POST" action="signup_process.php" onsubmit="return validateSignupForm(event)">
+            <form method="POST" action="../controller/UserController.php" onsubmit="return validateSignupForm(event)">
                 <input type="text" name="student_id" placeholder="Student ID" required>
                 <input type="text" name="full_name" placeholder="Full Name" required>
                 <input type="text" name="address" placeholder="Address" required>
@@ -41,9 +39,15 @@
                 </select>
                 <button type="submit">SIGN UP</button>
             </form>
-            <p class="signup-link">Already have an account? <a href="../view/loginView.php">Log In</a></p>
+            <p class="signup-link">Already have an account? <a href="loginView.php">Log In</a></p>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025. All Rights Reserved.</p>
+        <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+    </footer>
 </div>
+<script src="../public/js/script.js"></script>
 </body>
 </html>

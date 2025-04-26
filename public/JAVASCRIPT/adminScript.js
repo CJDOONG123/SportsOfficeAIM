@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelLogout?.addEventListener('click', () => closeModal(logoutModal));
 
         confirmLogout?.addEventListener('click', () => {
-            window.location.href = '../view/login.php';
+            window.location.href = '../view/loginView.php';
         });
 
         // Close modal with Escape key
