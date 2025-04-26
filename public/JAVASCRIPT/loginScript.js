@@ -1,16 +1,16 @@
 // Toggle password visibility
 function togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
-    const toggleText = document.querySelector('.toggle-password');
+    const toggleIcon = document.querySelector('.toggle-password');
 
-    if (passwordInput && toggleText) {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleText.textContent = 'Hide';
-        } else {
-            passwordInput.type = 'password';
-            toggleText.textContent = 'Show';
-        }
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('bx-show');
+        toggleIcon.classList.add('bx-hide');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('bx-hide');
+        toggleIcon.classList.add('bx-show');
     }
 }
 

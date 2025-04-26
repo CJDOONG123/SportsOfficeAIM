@@ -7,6 +7,4 @@ switch ($page) {
         require_once '../view/loginView.php';
         break;
 }
-
-
 ?>

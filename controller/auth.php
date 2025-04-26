@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -17,12 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (empty($email) || empty($password)) {
-        die("Email and password are required.");
+        $_SESSION['login_error'] = "Email and password are required.";
+        header("Location: ../view/loginView.php");
+        exit;
     }
 
     $stmt = $conn->prepare("CALL find_user_by_email(?)");
     if (!$stmt) {
-        die("Prepare failed: " . $conn->error);
+        $_SESSION['login_error'] = "An error occurred while processing your request.";
+        header("Location: ../view/loginView.php");
+        exit;
     }
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -32,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 
     if ($user && password_verify($password, $user['password'])) {
+        session_regenerate_id(true); // Prevent session fixation
+
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
@@ -44,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         $_SESSION['login_error'] = "Invalid email or password.";
-        header("Location: ../view/login.php");
+        header("Location: ../view/loginView.php");
         exit;
     }
 }
