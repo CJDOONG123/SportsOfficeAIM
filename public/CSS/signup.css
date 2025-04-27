@@ -308,4 +308,48 @@ footer a {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+.otpverify {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.otpverify input {
+    flex: 2;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.otpverify button {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff5e5e;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.otpverify button:hover {
+    background-color: #e04b4b;
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 480px) {
+    .otpverify {
+        flex-direction: column;
+    }
+
+    .otpverify input,
+    .otpverify button {
+        width: 100%;
+    }
+}
 
