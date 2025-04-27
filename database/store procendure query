@@ -158,3 +158,41 @@ DELIMITER ;
 
 
 
+
+//forgotpass
+
+DELIMITER //
+
+CREATE PROCEDURE ResetPasswordRequest(
+    IN p_student_id VARCHAR(50),
+    IN p_email VARCHAR(255),
+    IN p_reset_token_hash VARCHAR(64),
+    IN p_reset_token_expires_at DATETIME
+)
+BEGIN
+    DECLARE userCount INT;
+
+    SELECT COUNT(*) INTO userCount
+    FROM users
+    WHERE student_id = p_student_id
+      AND email = p_email;
+
+    IF userCount = 1 THEN
+        UPDATE users
+        SET reset_token_hash = p_reset_token_hash,
+            reset_token_expires_at = p_reset_token_expires_at
+        WHERE student_id = p_student_id
+          AND email = p_email;
+    END IF;
+
+    SELECT userCount AS result;
+END //
+
+DELIMITER ;
+
+
+//For data reset password
+ALTER TABLE user
+  ADD `reset_token_hash` VARCHAR(64) NULL DEFAULT NULL,
+  ADD `reset_token_expires_at` DATETIME NULL DEFAULT NULL,
+  ADD UNIQUE (`reset_token_hash`);

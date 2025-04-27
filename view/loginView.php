@@ -23,12 +23,14 @@ if (isset($_SESSION['login_error'])) {
 <div class="container">
     <!-- Left Panel -->
     <div class="left-panel">
-        <div class="logo-container">
-            <img src="../public/image/SportOffice.png" alt="Sports Office Logo" class="logo">
-            <img src="../public/image/Usep.png" alt="USeP Logo" class="logo">
+        <div class="content-wrapper">
+            <div class="logo-container">
+                <img src="../public/image/SportOffice.png" alt="Sports Office Logo" class="logo">
+                <img src="../public/image/Usep.png" alt="USeP Logo" class="logo">
+            </div>
+            <h2><span class="highlight">One Data.</span> <span class="highlight">One USeP.</span></h2>
+            <h1>USeP OSAS-Sports Unit</h1>
         </div>
-        <h2><span class="highlight">One Data.</span> <span class="highlight">One USeP.</span></h2>
-        <h1>USeP OSAS-Sports Unit</h1>
         <footer>
             <p>&copy; 2025. All Rights Reserved.</p>
             <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
@@ -39,7 +41,11 @@ if (isset($_SESSION['login_error'])) {
     <div class="right-panel">
         <div class="login-box">
             <h1>WELCOME</h1>
-            <p>Please log in to get started.</p>
+            <?php if (!empty($errorMessage)): ?>
+                <p style="color: red; font-weight: bold;"><?php echo htmlspecialchars($errorMessage); ?></p>
+            <?php else: ?>
+                <p>Please log in to get started.</p>
+            <?php endif; ?>
             <form method="POST" action="../controller/auth.php" onsubmit="return validateForm(event)">
                 <label>
                     <input type="email" name="email" placeholder="Enter Email" required>
@@ -48,11 +54,10 @@ if (isset($_SESSION['login_error'])) {
                     <input type="password" id="password" name="password" placeholder="Enter Password" required>
                     <i class="bx bx-show toggle-password" onclick="togglePasswordVisibility()"></i>
                 </div>
-
                 <button type="submit">LOGIN</button>
             </form>
             <p class="signup-link">Don't have an account? <a href="../view/signupView.php">Sign Up</a></p>
-
+            <p class="forgot-link"><a href="forgotPassView.php">Forgot Password ?</a></p>
         </div>
     </div>
 </div>

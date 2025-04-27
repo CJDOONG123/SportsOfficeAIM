@@ -148,6 +148,22 @@ form select:focus {
 }
 
 
+.login-box input[type="emails"] {
+    width: 100%;
+}
+/* Submit Button */
+button[type="texts"] {
+    width: 48%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+button[type="texts"]:hover {
+    background-color: #e04b4b;
+}
+
 
 
 /* Submit Button */
@@ -292,3 +308,4 @@ footer a {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+

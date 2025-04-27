@@ -52,23 +52,3 @@ function validateForm(event) {
     return isValid;
 }
 
-// Error modal handling
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('loginErrorModal');
-    const closeBtn = document.getElementById('closeLoginError');
-    const loginForm = document.querySelector('form');
-
-    if (modal && closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        if (typeof showLoginErrorModal !== 'undefined' && showLoginErrorModal) {
-            modal.style.display = 'flex';
-        }
-    }
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', validateForm);
-    }
-});
