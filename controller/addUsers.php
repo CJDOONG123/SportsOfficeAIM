@@ -9,39 +9,62 @@ $dbname = "SportOfficeDB";
 // Connect to database
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    header("Location: ../view/adminView.php?message=" . urlencode("Database connection failed"));
+    exit();
 }
 
-// Get form data
-$student_id = $_POST['student_id'];
-$full_name = $_POST['full_name'];
-$address = $_POST['address'];
-$email = $_POST['email'];
+// Validate and get form data
+$requiredFields = ['student_id', 'full_name', 'address', 'email', 'password', 'status'];
+foreach ($requiredFields as $field) {
+    if (empty($_POST[$field])) {
+        header("Location: ../view/adminView.php?message=" . urlencode("Missing required field: $field"));
+        exit();
+    }
+}
+
+$student_id = trim($_POST['student_id']);
+$full_name = trim($_POST['full_name']);
+$address = trim($_POST['address']);
+$email = trim($_POST['email']);
 $password = $_POST['password'];
-$status = $_POST['status'];
+$status = trim($_POST['status']);
+$page = isset($_POST['page']) ? trim($_POST['page']) : '';
+$currentPage = isset($_POST['currentPage']) ? trim($_POST['currentPage']) : '';
 
 // Hash the password securely
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Prepare the CALL to stored procedure
 $stmt = $conn->prepare("CALL AddUserIfAllowed(?, ?, ?, ?, ?, ?)");
+if (!$stmt) {
+    header("Location: ../view/adminView.php?message=" . urlencode("Prepare failed: " . $conn->error));
+    exit();
+}
+
 $stmt->bind_param("ssssss", $student_id, $full_name, $address, $email, $hashedPassword, $status);
 
-// Execute
-$stmt->execute();
+// Execute and fetch result
+if ($stmt->execute()) {
+    $result = $stmt->get_result();
 
-// Get the result
-$result = $stmt->get_result();
-if ($result) {
-    $row = $result->fetch_assoc();
-    $message = $row['result'];
+    if ($result && $row = $result->fetch_assoc()) {
+        $message = $row['result'];
+    } else {
+        $message = "User added successfully.";
+    }
 
-    // Redirect back with success or error message (optional)
-    header("Location: ../view/signupView.php?message=" . urlencode($message));
+    // After successful/failed user addition
+    if ($page === 'signup') {
+        header("Location: ../view/signupView.php?message=" . urlencode($message));
+    } else {
+        // For admin additions
+        if (isset($_POST['source']) && $_POST['source'] === 'usersPage') {
+            header("Location: ../view/adminView.php?page=Users&message=" . urlencode($message));
+        } else {
+            header("Location: ../view/adminView.php?page=Users&message=" . urlencode($message));
+        }
+    }
     exit();
-} else {
-    // Error during execution
-    die("Error inserting user: " . $conn->error);
 }
 
 $stmt->close();

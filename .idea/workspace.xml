@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61353cad-d58b-4648-9192-e39f980708fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/emailOTP.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/forgotPassView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/loginStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/loginStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JAVASCRIPT/loginScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/JAVASCRIPT/loginScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store procendure query" beforeDir="false" afterPath="$PROJECT_DIR$/database/store procendure query" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/login" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/addUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/addUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/adminStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/adminStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JAVASCRIPT/adminScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/JAVASCRIPT/adminScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/adminView.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/adminView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/loginView.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/signupView.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/signupView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +154,7 @@
       <workItem from="1745711501542" duration="7013000" />
       <workItem from="1745718749959" duration="4192000" />
       <workItem from="1745724087996" duration="429000" />
+      <workItem from="1745748608876" duration="9956000" />
     </task>
     <servers />
   </component>

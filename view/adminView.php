@@ -250,32 +250,62 @@
     </div>
 </div>
 
+
+
+
+
+
 <!-- Add User Modal -->
 <div id="addUserModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
-    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold">Add User</h2>
-            <button onclick="document.getElementById('addUserModal').classList.add('hidden')" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-        </div>
-        <form action="add_user.php" method="POST">
-            <div class="mb-4">
-                <label class="block text-gray-700">Username</label>
-                <input type="text" name="username" class="w-full border border-gray-300 p-2 rounded" required />
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative animate-fadeIn">
+        <button onclick="document.getElementById('addUserModal').classList.add('hidden')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+        <h2 class="text-2xl font-bold text-center mb-4">Add New User</h2>
+
+        <form method="POST" action="../controller/addUsers.php" onsubmit="return validateSignupForm(event)" class="flex flex-col gap-4">
+            <input type="text" name="student_id" placeholder="Student ID" required autocomplete="off" class="p-3 border rounded-lg">
+            <input type="text" name="full_name" placeholder="Full Name" required autocomplete="name" class="p-3 border rounded-lg">
+            <input type="text" name="address" placeholder="Address" required autocomplete="street-address" class="p-3 border rounded-lg">
+            <input type="email" name="email" placeholder="Email" required autocomplete="email" class="p-3 border rounded-lg">
+
+            <div class="relative">
+                <input type="password" id="admin-password" name="password" placeholder="Enter Password" required autocomplete="new-password" class="p-3 border rounded-lg w-full">
+                <i class="bx bx-show toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400 transition-all duration-300" onclick="togglePasswordVisibility('admin-password')"></i>
             </div>
-            <div class="mb-4">
-                <label class="block text-gray-700">Email</label>
-                <input type="email" name="email" class="w-full border border-gray-300 p-2 rounded" required />
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700">Password</label>
-                <input type="password" name="password" class="w-full border border-gray-300 p-2 rounded" required />
-            </div>
-            <div class="flex justify-end">
-                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Submit</button>
-            </div>
+
+            <select name="status" required class="p-3 border rounded-lg">
+                <option value="" disabled selected>Select Status</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="alumni">Alumni</option>
+            </select>
+
+            <!-- Add these hidden inputs -->
+            <input type="hidden" name="page" value="admin">
+            <input type="hidden" name="currentPage" value="Users">
+            <input type="hidden" name="source" value="usersPage">
+
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold">Add User</button>
         </form>
     </div>
 </div>
+
+
+<?php if (isset($_GET['message'])): ?>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm animate-fadeIn">
+            <p class="text-center text-lg font-semibold mb-4">
+                <?php echo isset($_GET['message']) ? htmlspecialchars($_GET['message']) : ''; ?>
+            </p>
+            <button class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg w-full"
+                    onclick="document.getElementById('messageModal').classList.add('hidden')">
+                OK
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
+
 </body>
 
 </html>

@@ -9,8 +9,6 @@
     <link rel="icon" href="../public/image/Usep.png" sizes="any">
     <script src="../public/JAVASCRIPT/loginScript.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons/css/boxicons.min.css" rel="stylesheet" />
-
-
 </head>
 <body>
 
@@ -37,7 +35,6 @@
                 <input type="text" name="address" placeholder="Address" required autocomplete="street-address">
                 <input type="email" name="email" placeholder="Email" required autocomplete="email">
 
-
                 <div class="password-container">
                     <input type="password" id="password" name="password" placeholder="Enter Password" required autocomplete="new-password">
                     <i class="bx bx-show toggle-password" onclick="togglePasswordVisibility()"></i>
@@ -48,6 +45,10 @@
                     <option value="undergraduate">Undergraduate</option>
                     <option value="alumni">Alumni</option>
                 </select>
+
+                <!-- 🔥 Add this hidden input -->
+                <input type="hidden" name="page" value="signup">
+
                 <button type="submit">SIGN UP</button>
             </form>
             <p class="signup-link">Already have an account? <a href="loginView.php">Log In</a></p>
