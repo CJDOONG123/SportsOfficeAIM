@@ -24,10 +24,38 @@ function closeModal(modalId) {
     if (modal) modal.classList.add('hidden');
 }
 
+function togglePasswordVisibility(inputId) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    const icon = input.nextElementSibling;
+    if (!icon) return;
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove('bx-show');
+        icon.classList.add('bx-hide');
+    } else {
+        input.type = "password";
+        icon.classList.remove('bx-hide');
+        icon.classList.add('bx-show');
+    }
+}
+
+function populateEditUserModal(studentId, fullName, address, email, status) {
+    document.getElementById('edit-student-id').value = studentId;
+    document.getElementById('edit-full-name').value = fullName;
+    document.getElementById('edit-address').value = address;
+    document.getElementById('edit-email').value = email;
+    document.getElementById('edit-status').value = status;
+    openModal('editUserModal');
+}
+
 // DOM elements
 let sidebar, mainContent, collapseBoxIcon;
 let logoutBtn, logoutModal, confirmLogout, cancelLogout;
 let messageModal;
+
+// Unified DOMContentLoaded event
 
 document.addEventListener('DOMContentLoaded', () => {
     sidebar = document.getElementById('sidebar');
@@ -65,11 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape') {
                 closeModal('logoutModal');
                 closeModal('messageModal');
+                closeModal('addUserModal');
+                closeModal('editUserModal');
             }
         });
     }
 
-    if (messageModal) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('message') && messageModal) {
         openModal('messageModal');
 
         const okButton = messageModal.querySelector('button');
@@ -77,43 +109,43 @@ document.addEventListener('DOMContentLoaded', () => {
             okButton.addEventListener('click', () => {
                 closeModal('messageModal');
 
-                // If "reopenAddUser=1", reopen the Add User Modal again
-                const urlParams = new URLSearchParams(window.location.search);
-
+                if (urlParams.get('reopenAddUser') === '1') {
                     openModal('addUserModal');
-
-
-                // ⚡️ DO NOT reload or change the page anymore
+                }
             });
         }
     }
-});
 
-// At the bottom of your adminScript.js or in a script tag
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if we should reopen the add user modal
-    const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('reopenAddUser') === '1') {
-        document.getElementById('addUserModal').classList.remove('hidden');
+        openModal('addUserModal');
     }
 
-    // Also show message modal if there's a message
-    if (urlParams.has('message')) {
-        document.getElementById('messageModal').classList.remove('hidden');
-    }
+    // Replace edit link clicks with opening edit modal
+    document.querySelectorAll('.edit-user-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const studentId = button.getAttribute('data-student-id');
+            const fullName = button.getAttribute('data-full-name');
+            const address = button.getAttribute('data-address');
+            const email = button.getAttribute('data-email');
+            const status = button.getAttribute('data-status');
+            populateEditUserModal(studentId, fullName, address, email, status);
+        });
+    });
 });
 
-function togglePasswordVisibility(inputId) {
-    const input = document.getElementById(inputId);
-    const icon = input.nextElementSibling;
 
-    if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove('bx-show');
-        icon.classList.add('bx-hide');
-    } else {
-        input.type = "password";
-        icon.classList.remove('bx-hide');
-        icon.classList.add('bx-show');
-    }
+function editUserModal(user) {
+    document.getElementById('edit-student-id').value = user.student_id;
+    document.getElementById('edit-full-name').value = user.full_name;
+    document.getElementById('edit-address').value = user.address;
+
+    const statusSelect = document.querySelector('#editUserModal select[name="status"]');
+    statusSelect.value = user.status;
+
+    document.getElementById('editUserModal').classList.remove('hidden');
+}
+
+function closeEditModal() {
+    document.getElementById('editUserModal').classList.add('hidden');
 }

@@ -73,22 +73,23 @@
                 <div class="w-full px-4 sm:px-0 flex flex-col items-center sm:items-end space-y-2 sm:space-y-4">
                     <!-- Add User Button -->
                     <button onclick="document.getElementById('addUserModal').classList.remove('hidden')"
-                            class="flex items-center text-red-500 font-semibold hover:text-red-600 sm:self-end w-auto">
+                            class="flex items-center text-red-500 font-semibold hover:text-blue-600 sm:self-end w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor"
-                             class="w-5 h-5 mr-1 border-2 border-red-500 rounded-full p-0.5">
+                             class="w-5 h-5 mr-1 border-2 border-blue-500 rounded-full p-0.5">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 4v16m8-8H4"/>
                         </svg>
                         Add users
                     </button>
 
+
                     <!-- Search Field -->
                     <form method="GET" action=""
                           class="sm:self-end w-auto">
                         <input type="hidden" name="page" value="Users"/>
                         <input type="text" name="search" placeholder="Search user..."
-                               class="border border-gray-300 rounded px-3 py-1 text-sm w-full focus:outline-none focus:ring-2 focus:ring-red-400"/>
+                               class="border border-gray-300 rounded px-3 py-1 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-400"/>
                     </form>
                 </div>
             <?php endif; ?>
@@ -144,11 +145,16 @@
         <div class="w-full px-4 sm:px-8 lg:px-8 space-y-2">
             <?php foreach ($users as $row): ?>
                 <div class="bg-white p-4 rounded-lg shadow-sm space-y-2 sm:space-y-0 sm:grid sm:grid-cols-12 sm:items-center">
+
+
                     <div class="text-center text-xl text-gray-600 sm:col-span-1">
-                        <a href="edit_user.php?student_id=<?= urlencode($row['student_id']) ?>" class="text-blue-500 hover:text-blue-700">
+                        <button onclick="openModal('editUserModal')"
+                                class="text-blue-500 hover:text-blue-700">
                             <i class="fas fa-edit"></i>
-                        </a>
+                        </button>
                     </div>
+
+
                     <div class="text-gray-800 font-medium sm:col-span-3">
                         <span class="block sm:hidden font-semibold text-gray-600">Student ID:</span>
                         <?= htmlspecialchars($row['student_id']) ?>
@@ -161,6 +167,17 @@
                         <span class="block sm:hidden font-semibold text-gray-600">Address:</span>
                         <?= htmlspecialchars($row['address']) ?>
                     </div>
+
+
+
+                    <!-- Delete Button -->
+                    <div class="text-center text-xl text-gray-600 sm:col-span-1">
+                        <button onclick="openModal('deleteUserModal')"
+                                class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
         </div>
@@ -254,40 +271,122 @@
 
 
 
+<!-- delete Modal Here -->
+
+
+<div id="deleteUserModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative animate-fadeIn">
+        <!-- Close Button -->
+        <button
+                onclick="document.getElementById('deleteUserModal').classList.add('hidden')"
+                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <h2 class="text-2xl font-bold text-center mb-4">DELETE USER</h2>
+
+        <!-- Confirmation Message -->
+        <h3 class="text-lg text-center text-gray-700 mb-4">Are you sure you want to delete this account?</h3>
+
+        <!-- Delete Form -->
+        <form method="POST" action="../controller/deleteUsers.php" class="flex flex-col gap-4">
+            <!-- Submit Button -->
+            <button
+                    type="submit"
+                    class="bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold w-full">
+                Delete Account
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- Edit User Modal -->
+
+
+<div id="editUserModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative animate-fadeIn">
+        <button onclick="document.getElementById('editUserModal').classList.add('hidden')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+        <h2 class="text-2xl font-bold text-center mb-4">EDIT USER</h2>
+
+        <form method="POST" action="../controller/editUsers.php" class="flex flex-col gap-4">
+
+            <input type="text" name="student_id" id="edit-student-id" placeholder="Student ID" required class="p-3 border rounded-lg w-full" readonly>
+
+            <input type="text" name="full_name" id="edit-full-name" placeholder="Full Name" required class="p-3 border rounded-lg w-full">
+
+            <input type="text" name="address" id="edit-address" placeholder="Address" required class="p-3 border rounded-lg w-full">
+
+            <select name="status" required class="p-3 border rounded-lg w-full">
+                <option value="" disabled>Select Status</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="alumni">Alumni</option>
+            </select>
+
+            <input type="hidden" name="page" value="admin">
+            <input type="hidden" name="currentPage" value="Users">
+            <input type="hidden" name="source" value="usersPage">
+
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold w-full">
+                Save Changes
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Add User Modal -->
 <div id="addUserModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
     <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative animate-fadeIn">
         <button onclick="document.getElementById('addUserModal').classList.add('hidden')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
-        <h2 class="text-2xl font-bold text-center mb-4">Add New User</h2>
+        <h2 class="text-2xl font-bold text-center mb-4">ADD NEW USER</h2>
 
         <form method="POST" action="../controller/addUsers.php" onsubmit="return validateSignupForm(event)" class="flex flex-col gap-4">
-            <input type="text" name="student_id" placeholder="Student ID" required autocomplete="off" class="p-3 border rounded-lg">
-            <input type="text" name="full_name" placeholder="Full Name" required autocomplete="name" class="p-3 border rounded-lg">
-            <input type="text" name="address" placeholder="Address" required autocomplete="street-address" class="p-3 border rounded-lg">
-            <input type="email" name="email" placeholder="Email" required autocomplete="email" class="p-3 border rounded-lg">
+            <input type="text" name="student_id" placeholder="Student ID" required autocomplete="off" class="p-3 border rounded-lg w-full">
+            <input type="text" name="full_name" placeholder="Full Name" required autocomplete="name" class="p-3 border rounded-lg w-full">
+            <input type="text" name="address" placeholder="Address" required autocomplete="street-address" class="p-3 border rounded-lg w-full">
+            <input type="email" name="email" placeholder="Email" required autocomplete="email" class="p-3 border rounded-lg w-full">
 
-            <div class="relative">
+            <div class="relative w-full">
                 <input type="password" id="admin-password" name="password" placeholder="Enter Password" required autocomplete="new-password" class="p-3 border rounded-lg w-full">
                 <i class="bx bx-show toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400 transition-all duration-300" onclick="togglePasswordVisibility('admin-password')"></i>
             </div>
 
-            <select name="status" required class="p-3 border rounded-lg">
+            <select name="status" required class="p-3 border rounded-lg w-full">
                 <option value="" disabled selected>Select Status</option>
                 <option value="undergraduate">Undergraduate</option>
                 <option value="alumni">Alumni</option>
             </select>
 
-            <!-- Add these hidden inputs -->
+            <!-- Hidden inputs -->
             <input type="hidden" name="page" value="admin">
             <input type="hidden" name="currentPage" value="Users">
             <input type="hidden" name="source" value="usersPage">
 
-            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold">Add User</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold w-full">Add User</button>
         </form>
     </div>
 </div>
+
 
 
 <?php if (isset($_GET['message'])): ?>

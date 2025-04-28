@@ -57,9 +57,13 @@ if (isset($_SESSION['login_error'])) {
                 <button type="submit">LOGIN</button>
             </form>
             <p class="signup-link">Don't have an account? <a href="../view/signupView.php">Sign Up</a></p>
-            <p class="forgot-link"><a href="../view/forgotPassView.php">Forgot Password ?</a></p>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+
+            <!--  I add teh forgot Password Function ones i finish the main System -->
+            <!--  DO NOT REMOVED IT-->
+            <!--<p class="forgot-link"><a href="../view/forgotPassView.php">Forgot Password ?</a></p>-->
+
+           </div>
+       </div>
+   </div>
+   </body>
+   </html>
